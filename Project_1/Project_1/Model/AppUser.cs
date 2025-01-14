@@ -72,13 +72,32 @@ namespace Project_1.Model
             }
             return false;
         }
-
-        public int GetUserIdByEmail(string email)
+      
+        public (int id, string name) GetUserIdByEmail(string Email)
         {
 
             DBservices dbs = new DBservices();
-            return dbs.GetUserIdByEmail(email);
+            return dbs.GetUserIdByEmail(Email);
+
         }
+
+
+        public AppUser Update(AppUser user)
+        {
+            DBservices dbs = new DBservices();
+            foreach (AppUser tempuser in dbs.Read())
+            {
+                if(tempuser.Id==user.Id && tempuser.Email==user.Email&&tempuser.Password==user.Password)
+                {
+                    return null;///משתמש לא נמצא או שיש כבר משתמש כזה
+                }
+                return dbs.UpdateUser(user);
+            }
+            return dbs.UpdateUser(user);
+        }
+
+
+
 
 
         //public int Update()

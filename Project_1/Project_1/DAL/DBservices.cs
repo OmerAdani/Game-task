@@ -161,7 +161,7 @@ namespace Project_1.DAL
 
         }
 
-        public int GetUserIdByEmail(string email)
+        public (int id,string name) GetUserIdByEmail(string email)
         {
             SqlConnection con;
             SqlCommand cmd;
@@ -186,10 +186,13 @@ namespace Project_1.DAL
 
                 if (dataReader.Read())
                 {
-                    return Convert.ToInt32(dataReader["ID"]);
+                   int id= Convert.ToInt32(dataReader["id"]);
+                    string name = dataReader["UserName"].ToString();
+
+                    return (id, name); // החזר Tuple עם UserId ו-Name
                 }
 
-                return -1; // מזהה לא נמצא
+                return (-1,null); // מזהה לא נמצא
             }
             catch (Exception ex)
             {
@@ -552,6 +555,59 @@ namespace Project_1.DAL
                 }
             }
 
+        }
+
+        public AppUser UpdateUser(AppUser user)
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                // יצירת חיבור למסד הנתונים
+                con = connect("igroup8_test2");
+            }
+            catch (Exception ex)
+            {
+                throw (ex); // כתיבת שגיאה ללוג
+            }
+
+            Dictionary<string, object> paramDic = new Dictionary<string, object>();
+            paramDic.Add("@UserId", user.Id); // שם הפרמטר לפי הפורמט שלך
+            paramDic.Add("@UserName", user.Name);
+            paramDic.Add("@Email", user.Email);
+            paramDic.Add("@Password", user.Password);
+
+            cmd = CreateCommandWithStoredProcedureGeneral("UpdateUser", con, paramDic);
+
+            try
+            {
+                SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                if (dataReader.Read())
+                {
+                    // מילוי אובייקט המשתמש עם הנתונים המעודכנים
+                    user.Id = Convert.ToInt32(dataReader["ID"]);
+                    user.Name = dataReader["UserName"].ToString();
+                    user.Email = dataReader["Email"].ToString();
+                    user.Password = dataReader["PasswordUser"].ToString();
+                    return user;
+                }
+                else
+                {
+                    return null; // אם לא נמצאו תוצאות
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex); // כתיבת שגיאה ללוג
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close(); // סגירת החיבור למסד הנתונים
+                }
+            }
         }
 
         //public int Update(AppUser user)
