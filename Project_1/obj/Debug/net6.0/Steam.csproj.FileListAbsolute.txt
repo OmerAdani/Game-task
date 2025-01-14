@@ -1,0 +1,153 @@
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\appsettings.json
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Steam.exe
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Steam.deps.json
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Steam.runtimeconfig.json
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Steam.dll
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Steam.pdb
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\source\repos\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfo.cs
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\scopedcss\bundle\Steam.styles.css
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CopyComplete
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.dll
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\refint\Steam.dll
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.pdb
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\Steam.genruntimeconfig.cache
+C:\Users\User\source\repos\Project_1\Project_1\obj\Debug\net6.0\ref\Steam.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Steam.exe
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Steam.deps.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Steam.runtimeconfig.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Steam.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Steam.pdb
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfo.cs
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\scopedcss\bundle\Steam.styles.css
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CopyComplete
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\refint\Steam.dll
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.pdb
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\Steam.genruntimeconfig.cache
+C:\Users\User\Desktop\אינטרנטיות 2\Project_1\Project_1\obj\Debug\net6.0\ref\Steam.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.staticwebassets.endpoints.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.exe
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.deps.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.runtimeconfig.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.pdb
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.AssemblyReference.cache
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfoInputs.cache
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfo.cs
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CoreCompileInputs.cache
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\scopedcss\bundle\Steam.styles.css
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.Steam.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.Steam.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.build.Steam.props
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Steam.props
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Steam.props
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.Up2Date
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\refint\Steam.dll
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.pdb
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.genruntimeconfig.cache
+C:\Users\ariza\Music\New folder\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\ref\Steam.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\appsettings.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.staticwebassets.endpoints.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.exe
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.deps.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.runtimeconfig.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Steam.pdb
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.AssemblyReference.cache
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfoInputs.cache
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfo.cs
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CoreCompileInputs.cache
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\scopedcss\bundle\Steam.styles.css
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.endpoints.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.Steam.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.Steam.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.build.Steam.props
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Steam.props
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Steam.props
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.upToDateCheck.txt
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.Up2Date
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\refint\Steam.dll
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.pdb
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\Steam.genruntimeconfig.cache
+C:\Users\banti\Downloads\ÇëÉêÿÉêëàÜ 2\ÇëÉêÿÉêëàÜ 2\Project_1\Project_1\obj\Debug\net6.0\ref\Steam.dll
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\appsettings.json
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Steam.exe
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Steam.deps.json
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Steam.runtimeconfig.json
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Steam.dll
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Steam.pdb
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\Desktop\Project_1\Project_1\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.AssemblyInfo.cs
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\scopedcss\bundle\Steam.styles.css
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.csproj.CopyComplete
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.dll
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\refint\Steam.dll
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.pdb
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\Steam.genruntimeconfig.cache
+C:\Users\User\Desktop\Project_1\Project_1\obj\Debug\net6.0\ref\Steam.dll

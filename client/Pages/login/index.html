@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Games</title>
+    <link rel="stylesheet" href="Games.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <script src="../js/ajaxcalls.js"></script>
+    <style>
+      /* Styling for the "View My List" button */
+      #view-my-list-btn {
+        display: block;
+        margin: 20px auto;
+        background-color: #4caf50;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+        text-align: center;
+      }
+
+      #view-my-list-btn:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      /* Styling for the "Update Page" button */
+      #updatePage_btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      #updatePage_btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      /* Styling for the h1 header */
+      h1 {
+        text-align: center;
+        color: #333;
+        font-size: 28px;
+        margin-top: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+
+      #games-container {
+        margin: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .game-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="helloUser">Hello</h1>
+    <button id="view-my-list-btn" onclick="viewMyList()">View My List</button>
+    <button id="updatePage_btn">Update your profile</button>
+    <div id="games-container"></div>
+    <!-- "View My List" button above the games -->
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("page is load");
+        helloUser();
+      });
+      function helloUser() {
+        const userName = localStorage.getItem("loggedInUserName");
+        document.getElementById("helloUser").innerHTML += ` ${userName}!!`;
+      }
+      $(document).ready(function () {
+        $("#view-my-list-btn").click(function () {
+          window.location.href = "MYGAMES2.html"; // מעבר לעמוד index.html
+        });
+      });
+      $(document).ready(function () {
+        $("#updatePage_btn").click(function () {
+          window.location.href = "update.html"; // מעבר לעמוד index.html
+        });
+      });
+
+      function renderGame(game) {
+        const container = document.getElementById("games-container");
+
+        // Assuming 'GAME' is a list of game objects
+        game.forEach((game) => {
+          const gameDiv = document.createElement("div");
+          gameDiv.classList.add("game-card");
+
+          // Title
+          const title = document.createElement("h2");
+          title.textContent = game.Name || "Unknown Game";
+          gameDiv.appendChild(title);
+          // Header image
+          const headerImage = document.createElement("img");
+          headerImage.src =
+            game.Header_image ||
+            game.HeaderImage ||
+            "https://via.placeholder.com/400";
+          headerImage.alt = game.Name || "Game Image";
+          headerImage.style.width = "100%";
+          gameDiv.appendChild(headerImage);
+
+          // Description
+          const description = document.createElement("p");
+          description.textContent =
+            game.description || game.Description || "No description available.";
+          gameDiv.appendChild(description);
+
+          // Release date
+          const releaseDate = document.createElement("p");
+          releaseDate.textContent = `Release Date: ${
+            game.Release_date || game.ReleaseDate || "Unknown"
+          }`;
+          gameDiv.appendChild(releaseDate);
+
+          // Price
+          const price = document.createElement("p");
+          price.textContent = `Price: $${game.Price || "0.00"}`;
+          gameDiv.appendChild(price);
+
+          // Platforms
+          const platforms = document.createElement("p");
+          platforms.textContent = `Platforms: ${
+            [
+              game.Windows ? "Windows" : "",
+              game.Mac ? "Mac" : "",
+              game.Linux ? "Linux" : "",
+            ]
+              .filter(Boolean)
+              .join(", ") || "Not specified"
+          }`;
+          gameDiv.appendChild(platforms);
+
+          // Score Rank
+          const score = document.createElement("p");
+          if (game.ScoreRank || game.ScoreRank === 0) {
+            score.textContent = `Score: ${game.ScoreRank}`;
+          } else {
+            score.textContent = "Score: No score available";
+          }
+          gameDiv.appendChild(score);
+          // Screenshots
+          const screenshotContainer = document.createElement("div");
+          if (game.Screenshots) {
+            game.Screenshots.split(",").forEach((url) => {
+              const screenshot = document.createElement("img");
+              screenshot.src = url.trim();
+              screenshot.alt = "Screenshot";
+              screenshot.style.width = "200px";
+              screenshot.style.marginRight = "10px";
+              screenshotContainer.appendChild(screenshot);
+            });
+          }
+          gameDiv.appendChild(screenshotContainer);
+
+          // Add to My List button
+          const addButton = document.createElement("button");
+          addButton.textContent = "ADD TO MY LIST";
+          addButton.style.margin = "10px";
+          addButton.addEventListener("click", () => {
+            addToMyList(game);
+          });
+          gameDiv.appendChild(addButton);
+
+          // Append the game div to the container
+          container.appendChild(gameDiv);
+        });
+
+        // Function to navigate to mygames.html
+        function viewMyList() {
+          window.location.href = "mygames.html";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Page loaded successfully");
+        getGames();
+        const user = localStorage.getItem("loggedInUserName");
+
+        if (user) {
+          $("#greeting").text(`Hello, ${user}!`);
+          alert(`Welcome to the page, ${user}!`);
+        } else {
+          $("#greeting").text("Hello, Guest!");
+          alert("Welcome to the page, Guest!");
+        }
+      });
+
+      function getGames() {
+        ajaxCall(
+          "GET",
+          "https://localhost:7147/api/Games/GetAllGames",
+          "",
+          successCB,
+          errorCB
+        );
+      }
+
+      function successCB(obj) {
+        console.log(obj);
+        renderGame(obj);
+      }
+
+      function errorCB(obj) {
+        console.error("Error fetching games:", obj);
+      }
+
+      // Function to send the POST request to add a game to the list
+      function addToMyList(game) {
+        //  let date = new Date(game.Release_date);
+        //  let gameData = JSON.stringify({
+        //    AppID: game.AppID !== undefined ? game.AppID : null, // Use `null` for numeric fields
+        //    Name: game.Name !== undefined ? game.Name : "",
+        //     ReleaseDate:
+        //       game.Release_date !== undefined ? date.toISOString() : "",
+        //     Price: game.Price !== undefined ? game.Price : 0, // Ensure numeric fields use valid numbers
+        //     Description: game.description !== undefined ? game.description : "",
+        //    HeaderImage: game.Header_image !== undefined ? game.Header_image : "",
+        //    Website: game.Website !== undefined ? game.Website : "",
+        //    Windows: game.Windows == "TRUE" ? true : false, // Ensure boolean fields use valid booleans
+        //    Mac: game.Mac == "TRUE" ? true : false,
+        //   Linux: game.Linux !== "TRUE" ? true : false,
+        //    ScoreRank: game.Score_rank !== undefined ? game.Score_rank : 0,
+        //   Recommendations:
+        //      game.Recommendations !== undefined ? game.Recommendations : "",
+        //    Publisher: game.Publisher !== undefined ? game.Publisher : "",
+        //  });
+        const appId = game.AppID; // Extract AppID from the game object
+        console.log("Adding game with AppID:", appId); // Debugging log
+        alert(`Game name ${game.Name} added successfully to your list!`);
+        const userId = localStorage.getItem("loggedInUserId");
+
+        if (!userId) {
+          alert("User is not logged in. Please log in first.");
+          return;
+        }
+
+        const url = `https://localhost:7147/api/Games/AddGameToList?userId=${userId}&gameId=${appId}`;
+
+        ajaxCall("POST", url, null, addGameSuccessCB, addGameErrorCB);
+      }
+
+      function addGameSuccessCB(response, appId) {
+        console.log(
+          `Game name ${game.Name} added successfully to your list!`,
+          response
+        );
+        alert(`Game name ${game.Name} added successfully to your list!`);
+      }
+
+      function addGameErrorCB(error) {
+        console.error("Error adding game to user's list:", error);
+        alert(
+          error?.responseJSON?.message ||
+            "Network error occurred while adding the game."
+        );
+      }
+      //}
+
+      // Ajax function to handle the POST request
+      function ajaxCall(method, api, data, successCB, errorCB) {
+        $.ajax({
+          type: method,
+          url: api,
+          data: data,
+          cache: false,
+          contentType: "application/json", // Set content type to JSON
+          dataType: "json", // Expect a JSON response
+          success: successCB, // Callback on success
+          error: errorCB, // Callback on error
+        });
+      }
+    </script>
+  </body>
+</html>

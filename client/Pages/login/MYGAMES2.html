@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/Pages/ajaxcalls.js"></script>
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f3f4f6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #2d3748;
+        color: #63b3ed;
+        padding: 25px;
+        text-align: center;
+        font-size: 2.2rem;
+        border-bottom: 4px solid #4a5568;
+        position: relative;
+      }
+
+      .back-button {
+        position: absolute;
+        left: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #63b3ed;
+        color: white;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .back-button:hover {
+        background-color: #4299e1;
+      }
+
+      .main-controllers {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin: 30px;
+      }
+
+      .controller {
+        text-align: center;
+        background-color: #edf2f7;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 250px;
+      }
+
+      .controller h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #2d3748;
+      }
+
+      .controller input {
+        padding: 12px;
+        width: 80%;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 15px;
+        background-color: #f7fafc;
+      }
+
+      .controller button {
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #63b3ed;
+        color: white;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .controller button:hover {
+        background-color: #4299e1;
+      }
+
+      .game-card {
+        display: flex;
+        background-color: #ffffff;
+        border-radius: 12px;
+        margin: 20px;
+        padding: 15px;
+        color: #333;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .game-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .game-image {
+        width: 140px;
+        height: 140px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        object-fit: cover;
+      }
+
+      .game-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+        margin-bottom: 15px;
+      }
+
+      .game-name {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .game-description {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: #4a5568;
+      }
+
+      .game-price {
+        color: #48bb78;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      .game-score {
+        background-color: #9ae3d4;
+        padding: 5px 12px;
+        border-radius: 25px;
+        color: #1a202c;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .delete-button {
+        background-color: #f56565;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+      }
+
+      .delete-button:hover {
+        background-color: #e53e3e;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MY GAMES</h1>
+    <div><button id="go-to-page1-btn">Go to home page</button></div>
+    <label for="gamePrice">Price:</label>
+    <input type="number" id="gamePrice" placeholder="Enter game price" />
+    <button id="getByPriceBtn">Get Games by Price</button>
+
+    <label for="gameRank">Rank:</label>
+    <input type="number" id="gameRank" placeholder="Enter game rank score" />
+    <button id="getByRankBtn">Get Games by Rank</button>
+
+    <div id="game-container">
+      <div id="game-list"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Page load successfuly");
+        getgame();
+      });
+      $(document).ready(function () {
+        $("#go-to-page1-btn").click(function () {
+          window.location.href = "index.html"; // מעבר לעמוד index.html
+        });
+      });
+      function getgame() {
+        const userID = localStorage.getItem("loggedInUserId");
+        const url = `https://localhost:7147/api/Games/${userID}`;
+        ajaxCall("GET", url, "", getgameSCB, getgameECB);
+
+        function getgameSCB(obj) {
+          console.log(obj);
+          rendergame(obj);
+        }
+
+        function getgameECB(obj) {
+          console.log(obj);
+        }
+
+        function rendergame(game) {
+          console.log(game);
+
+          const gamesContainer = document.getElementById("game-list");
+          gamesContainer.innerHTML = "";
+
+          game.forEach((game) => {
+            //let str = `<div class="game">hhh</div>`;
+            //  document.getElementById("game-list").innerHTML += str;
+
+            const myDiv = document.createElement("div");
+            myDiv.classList.add("game");
+            myDiv.id = "game_id" + game.AppID;
+            myDiv.innerHTML += `<img src="${game.HeaderImage}" alt="${
+              game.Name
+            }" class="game-header-image">
+          <h2>${game.Name}</h2>
+          
+          <p><strong>App ID:</strong> ${game.AppID}</p>
+          <p><strong>Release Date:</strong> ${game.ReleaseDate} </p>
+  
+        <p><strong>Price:</strong> $${game.Price}</p>
+        <p><strong>Description:</strong> ${game.Description}</p>
+        <p><strong>Score Rank:</strong> ${game.ScoreRank}</p>
+
+        <p><strong>Platforms:</strong>
+  ${game.Windows ? "Windows " : ""}
+  ${game.Mac ? "Mac " : ""}
+  ${game.Linux ? "Linux" : ""}
+</p>
+
+          
+        </p>
+        <a href="${game.Website}" target="_blank">Official Website</a>`;
+
+            const mybutton = document.createElement("button");
+            mybutton.classList.add("deleteButton");
+            mybutton.setAttribute("data-id", game.AppID);
+            mybutton.textContent = `REMOVE FROM MY LIST`;
+            myDiv.appendChild(mybutton);
+            document.getElementById("game-list").appendChild(myDiv);
+
+            mybutton.addEventListener("click", () => {
+              deleteGame(game);
+            });
+          });
+        }
+        function deleteGame(game) {
+          console.log(game.AppID);
+          const userID = localStorage.getItem("loggedInUserId");
+          const gameID = game.AppID;
+          const url = `https://localhost:7147/api/Games/DeleteGameFromList?userId=${userID}&gameId=${gameID}`;
+          ajaxCall("DELETE", url, "", deleteSCB, deleteECB);
+        }
+        function deleteSCB(obj) {
+          console.log(obj);
+          location.reload();
+          rendergame(obj);
+        }
+
+        function deleteECB(obj) {
+          console.log(obj);
+        }
+
+        window.onload = function () {
+          document
+            .getElementById("getByPriceBtn")
+            .addEventListener("click", function () {
+              getGamesByPrice();
+            });
+          document
+            .getElementById("getByRankBtn")
+            .addEventListener("click", function () {
+              getGamesByRank();
+            });
+        };
+
+        /// לפי מחיר
+        function getGamesByPrice() {
+          const price = document.getElementById("gamePrice").value;
+          const userID = localStorage.getItem("loggedInUserId");
+          console.log(price, userID);
+          const url = `https://localhost:7147/api/Games/GetByPrice/${userID}/22?Price=${price}`;
+          ajaxCall("GET", url, "", GetByPriceSCB, GetByPriceECB);
+        }
+
+        function GetByPriceSCB(obj) {
+          console.log(obj);
+          rendergame(obj);
+        }
+
+        function GetByPriceECB(error) {
+          console.error("Error fetching games by price:", error);
+        }
+        ///////////////////////////
+
+        //// לפי ניקוד
+        function getGamesByRank() {
+          const rank = document.getElementById("gameRank").value;
+          const userID = localStorage.getItem("loggedInUserId");
+          console.log(rank);
+          const url = `https://localhost:7147/api/Games/minScore/${userID}/${rank}`;
+          ajaxCall("GET", url, "", GetByRankSCB, GetByRankECB);
+        }
+        function GetByRankSCB(obj) {
+          console.log(obj);
+          rendergame(obj);
+        }
+
+        function GetByRankECB(error) {
+          console.error("Error fetching games by rank:", error);
+        }
+      }
+    </script>
+  </body>
+</html>

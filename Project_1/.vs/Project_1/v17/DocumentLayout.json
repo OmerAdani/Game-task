@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|c:\\users\\banti\\downloads\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\project_1\\project_1\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|solutionrelative:project_1\\controllers\\gamescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|c:\\users\\banti\\downloads\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\project_1\\project_1\\model\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|solutionrelative:project_1\\model\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|c:\\users\\banti\\downloads\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\project_1\\project_1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|solutionrelative:project_1\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|c:\\users\\banti\\downloads\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\\u00E7\u00EB\u00E9\u00EA\u00FF\u00E9\u00EA\u00EB\u00E0\u00FC 2\\project_1\\project_1\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ADE177A7-6987-4847-8508-FDE8E1C691C3}|Project_1\\Steam.csproj|solutionrelative:project_1\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GamesController.cs",
+              "DocumentMoniker": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Controllers\\GamesController.cs",
+              "RelativeDocumentMoniker": "Project_1\\Controllers\\GamesController.cs",
+              "ToolTip": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Controllers\\GamesController.cs",
+              "RelativeToolTip": "Project_1\\Controllers\\GamesController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAswG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T12:54:46.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Model\\Game.cs",
+              "RelativeDocumentMoniker": "Project_1\\Model\\Game.cs",
+              "ToolTip": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Model\\Game.cs",
+              "RelativeToolTip": "Project_1\\Model\\Game.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAEwFAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T12:54:46.35Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Model\\User.cs",
+              "RelativeDocumentMoniker": "Project_1\\Model\\User.cs",
+              "ToolTip": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Model\\User.cs",
+              "RelativeToolTip": "Project_1\\Model\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T12:54:45.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Project_1\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\banti\\Downloads\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\\u00C7\u00EB\u00C9\u00EA\u00FF\u00C9\u00EA\u00EB\u00E0\u00DC 2\\Project_1\\Project_1\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Project_1\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-08T12:54:46.357Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

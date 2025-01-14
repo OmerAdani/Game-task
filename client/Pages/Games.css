@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Container */
+#games-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Game Card */
+.game-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Game Card Content */
+.game-card h2 {
+  font-size: 20px;
+  margin: 15px;
+  color: #222;
+  text-align: center;
+}
+
+.game-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Game Description */
+.game-card p {
+  margin: 10px 15px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* Price and Platforms */
+.game-card p strong {
+  color: #222;
+}
+
+/* Screenshots Container */
+.game-card div img {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add to My List Button */
+.game-card button {
+  margin: 15px;
+  padding: 10px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.game-card button:hover {
+  background: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #games-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .game-card {
+    margin: 0 auto;
+  }
+}

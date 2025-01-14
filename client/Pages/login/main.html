@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f9;
+        margin-top: 50px;
+      }
+      h1 {
+        color: #333;
+      }
+      .container {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      form {
+        display: none;
+        margin-top: 20px;
+        text-align: left;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="welcomeHeader">Welcome!</h1>
+      <p id="greeting">Hello, Guest! Please log in.</p>
+
+      <div id="loginContainer">
+        <label for="username">Username:</label>
+        <input type="text" id="username" placeholder="Enter your username" />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+        />
+
+        <button id="loginBtn">Login</button>
+      </div>
+
+      <div id="profileContainer" style="display: none">
+        <button id="editProfileBtn">Edit My Profile</button>
+
+        <form id="editProfileForm">
+          <label for="editUsername">Username:</label>
+          <input type="text" id="editUsername" required />
+
+          <label for="editEmail">Email:</label>
+          <input type="email" id="editEmail" required />
+
+          <label for="editPassword">Password:</label>
+          <input type="password" id="editPassword" required />
+
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Check if a user is already logged in by looking at local storage
+      document.addEventListener("DOMContentLoaded", () => {
+        const userData = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        const greetingElement = document.getElementById("greeting");
+        const loginContainer = document.getElementById("loginContainer");
+        const profileContainer = document.getElementById("profileContainer");
+        console.log(localStorage.getItem("loggedInUser"));
+
+        if (localStorage.getItem("loggedInUser")) {
+          // User is logged in
+          greetingElement.textContent = `Hello, ${localStorage.getItem(
+            "loggedInUserName"
+          )}!`;
+          document.getElementById("editUsername").value = userData.username;
+          document.getElementById("editEmail").value = userData.email;
+
+          loginContainer.style.display = "none";
+          profileContainer.style.display = "block";
+        } else {
+          // No user is logged in
+          greetingElement.textContent = "Hello, Guest! Please log in.";
+          loginContainer.style.display = "block";
+          profileContainer.style.display = "none";
+        }
+      });
+
+      // Handle login logic
+      const loginBtn = document.getElementById("loginBtn");
+      loginBtn.addEventListener("click", () => {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Example AJAX call for login
+        ajaxCall(
+          "POST",
+          "https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/Login",
+          JSON.stringify({ username, password }),
+          (data) => {
+            // Store logged-in user data in local storage
+            localStorage.setItem(
+              "loggedInUser",
+              JSON.stringify({
+                username: data.username,
+                email: data.email,
+              })
+            );
+
+            // Reload the page to reflect login state
+            window.location.reload();
+          },
+          (error) => {
+            alert(`Login failed: ${error.message}`);
+          }
+        );
+      });
+
+      // Toggle edit profile form visibility
+      const editProfileBtn = document.getElementById("editProfileBtn");
+      const editProfileForm = document.getElementById("editProfileForm");
+
+      editProfileBtn.addEventListener("click", () => {
+        editProfileForm.style.display =
+          editProfileForm.style.display === "block" ? "none" : "block";
+      });
+
+      // Handle profile update submission
+      editProfileForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const updatedUsername = document.getElementById("editUsername").value;
+        const updatedEmail = document.getElementById("editEmail").value;
+        const updatedPassword = document.getElementById("editPassword").value;
+
+        ajaxCall(
+          "PUT",
+          `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/UpdateUser`,
+          JSON.stringify({
+            username: updatedUsername,
+            email: updatedEmail,
+            password: updatedPassword,
+          }),
+          (data) => {
+            // Update local storage with new data
+            localStorage.setItem(
+              "loggedInUser",
+              JSON.stringify({
+                username: updatedUsername,
+                email: updatedEmail,
+              })
+            );
+
+            alert("Profile updated successfully!");
+            window.location.reload();
+          },
+          (error) => {
+            alert(`Error updating profile: ${error.message}`);
+          }
+        );
+      });
+
+      // AJAX utility function
+      function ajaxCall(method, url, data, successCallback, errorCallback) {
+        fetch(url, {
+          method: method,
+          headers: { "Content-Type": "application/json" },
+          body: data,
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then(successCallback)
+          .catch((error) => errorCallback({ message: error.message }));
+      }
+    </script>
+  </body>
+</html>

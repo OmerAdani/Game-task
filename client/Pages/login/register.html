@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/ajaxcalls.js"></script>
+    <title>User Login and Registration</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f9;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .error {
+        color: red;
+        font-size: 0.9em;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Enter your email"
+          required
+        />
+        <label for="loginPassword">Password:</label>
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+
+      <h1>Register</h1>
+      <form id="registerForm">
+        <label for="registerName">Name:</label>
+        <input
+          type="text"
+          id="registerName"
+          placeholder="Enter your name"
+          required
+        />
+        <label for="registerEmail">Email:</label>
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Enter your email"
+          required
+        />
+        <label for="registerPassword">Password:</label>
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Enter a strong password"
+          required
+        />
+        <span class="error" id="passwordError"></span>
+        <button id="registerbtn" type="submit">Register</button>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      // Define the ajaxCall function
+
+      function ajaxCall(method, api, data, successCB, errorCB) {
+        $.ajax({
+          type: method,
+          url: api,
+          data: data,
+          cache: false,
+          contentType: "application/json",
+          dataType: "json",
+          success: successCB,
+          error: errorCB,
+        });
+      }
+
+      $(document).ready(function () {
+        // Register Form Submission
+        $("#registerForm").submit(function (e) {
+          e.preventDefault();
+
+          const name = $("#registerName").val();
+          const email = $("#registerEmail").val();
+          const password = $("#registerPassword").val();
+          const passwordError = $("#passwordError");
+          const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Z\d]+$/;
+          // Regex: Only uppercase letters and numbers
+
+          if (!passwordRegex.test(password)) {
+            passwordError.text(
+              "Password must contain only uppercase letters and numbers."
+            );
+            return;
+          } else {
+            passwordError.text(""); // Clear error message
+          }
+
+          // Prepare user data
+          const userData = {
+            Name: name,
+            Email: email,
+            Password: password,
+          };
+
+          // Send AJAX POST request to the Register API
+          ajaxCall(
+            "POST",
+            "https://localhost:7147/api/Users/PostRegister",
+            JSON.stringify(userData),
+            (data) => {
+              alert("Registration successful! please login");
+            },
+            (error) => {
+              alert(`Error: ${error.message}`);
+
+              console.error("Registration error:", error);
+            }
+          );
+        });
+      });
+
+      $(document).ready(function () {
+        // Login Form Submission
+        $("#loginForm").submit(function (e) {
+          e.preventDefault(); // Prevent default form submission behavior
+
+          // Collect user input
+          const email = $("#loginEmail").val();
+          const password = $("#loginPassword").val();
+
+          const api = `https://localhost:7147/api/Users/PostLogin?Email=${email}&Password=${password}`;
+          // Make the AJAX call
+          ajaxCall("POST", api, null, PostLoginSCB, PostLoginECB);
+
+          // Success callback
+          function PostLoginSCB(obj) {
+            console.log(obj); // Log the response object for debugging
+            if (obj.id > 0 || obj.name === null) {
+              // Extract details from the response object
+              const userName = obj.name;
+              const Email = $("#loginEmail").val();
+              localStorage.setItem("loggedInUserName", userName);
+              localStorage.setItem("loggedInUserEmail", Email);
+              localStorage.setItem("loggedInUserId", obj.id);
+              console.log(localStorage.getItem("loggedInUserName"));
+
+              // Notify the user and redirect
+              alert("Login successful! Redirecting to the homepage...");
+              window.location.href = `index.html?username=${encodeURIComponent(
+                userName
+              )}`;
+            } else {
+              alert(
+                "Login failed. There is probably a problem with your password or email"
+              );
+            }
+          }
+
+          // Error callback
+          function PostLoginECB(obj) {
+            console.log(obj); // Corrected to console.log
+            alert("Login failed");
+          }
+        }); // Closing the $("#loginForm").submit function
+      }); // Closing the $(document).ready function
+    </script>
+  </body>
+</html>
