@@ -142,8 +142,16 @@ namespace Project_1.Model
         {
             DBservices dbs = new DBservices(); // יצירת אובייקט של DBServices
 
-            return dbs.DeleteGameFromList(userId,gameId);
+            return dbs.DeleteGameFromList(userId, gameId);
         }
+
+        public List<Object> GetGameDetails()
+        {
+
+            DBservices dbs = new DBservices();
+            return dbs.GetGameDetails();
+        }
+
 
 
 

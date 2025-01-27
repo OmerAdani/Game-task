@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Games</title>
-    <link rel="stylesheet" href="Games.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
-    <script src="../js/ajaxcalls.js"></script>
+    <script src="https://proj.ruppin.ac.il/igroup8/test2/tar3/client/Pages/ajaxcalls.js?v=1.0"></script>
     <style>
       /* Styling for the "View My List" button */
       #view-my-list-btn {
@@ -35,6 +34,8 @@
 
       /* Styling for the "Update Page" button */
       #updatePage_btn {
+        display: block;
+        margin: 10px;
         display: inline-block;
         background-color: #007bff;
         color: white;
@@ -85,15 +86,62 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background-color: #fff;
       }
+
+      /* Styling for the admin button */
+      .admin-button {
+        margin: 10px;
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      /* Hover effect for the admin button */
+      .admin-button:hover {
+        background-color: #4299e1; /* Darker blue on hover */
+        transform: scale(1.05); /* Slight zoom effect */
+      }
+
+      /* Styling for the Log Out button */
+      #logout-btn {
+        display: block;
+        margin: 10px;
+        background-color: #ff4c4c;
+        color: white;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+        text-align: center;
+      }
+
+      #logout-btn:hover {
+        background-color: #e53935;
+        transform: scale(1.05);
+      }
     </style>
   </head>
 
   <body>
     <h1 id="helloUser">Hello</h1>
-    <button id="view-my-list-btn" onclick="viewMyList()">View My List</button>
-    <button id="updatePage_btn">Update your profile</button>
+
+    <div id="button-container">
+      <button id="view-my-list-btn" onclick="viewMyList()">View My List</button>
+      <button id="updatePage_btn">Update your profile</button>
+      <div id="admin-link"></div>
+      <button id="logout-btn">Log Out</button>
+    </div>
+
     <div id="games-container"></div>
-    <!-- "View My List" button above the games -->
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -112,6 +160,18 @@
       $(document).ready(function () {
         $("#updatePage_btn").click(function () {
           window.location.href = "update.html"; // מעבר לעמוד index.html
+        });
+      });
+      $(document).ready(function () {
+        $("#logout-btn").click(function () {
+          // מחיקת הנתונים מ-localStorage
+          localStorage.removeItem("loggedInUserName");
+          localStorage.removeItem("loggedInUserEmail");
+          localStorage.removeItem("loggedInUserId");
+          localStorage.removeItem("loggedInUserPassword");
+
+          // מעבר לעמוד register.html
+          window.location.href = "login.html";
         });
       });
 
@@ -216,7 +276,7 @@
 
         if (user) {
           $("#greeting").text(`Hello, ${user}!`);
-          alert(`Welcome to the page, ${user}!`);
+          alert(`Welcome to home page, ${user}!`);
         } else {
           $("#greeting").text("Hello, Guest!");
           alert("Welcome to the page, Guest!");
@@ -226,7 +286,7 @@
       function getGames() {
         ajaxCall(
           "GET",
-          "https://localhost:7147/api/Games/GetAllGames",
+          "https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Games/GetAllGames",
           "",
           successCB,
           errorCB
@@ -244,24 +304,6 @@
 
       // Function to send the POST request to add a game to the list
       function addToMyList(game) {
-        //  let date = new Date(game.Release_date);
-        //  let gameData = JSON.stringify({
-        //    AppID: game.AppID !== undefined ? game.AppID : null, // Use `null` for numeric fields
-        //    Name: game.Name !== undefined ? game.Name : "",
-        //     ReleaseDate:
-        //       game.Release_date !== undefined ? date.toISOString() : "",
-        //     Price: game.Price !== undefined ? game.Price : 0, // Ensure numeric fields use valid numbers
-        //     Description: game.description !== undefined ? game.description : "",
-        //    HeaderImage: game.Header_image !== undefined ? game.Header_image : "",
-        //    Website: game.Website !== undefined ? game.Website : "",
-        //    Windows: game.Windows == "TRUE" ? true : false, // Ensure boolean fields use valid booleans
-        //    Mac: game.Mac == "TRUE" ? true : false,
-        //   Linux: game.Linux !== "TRUE" ? true : false,
-        //    ScoreRank: game.Score_rank !== undefined ? game.Score_rank : 0,
-        //   Recommendations:
-        //      game.Recommendations !== undefined ? game.Recommendations : "",
-        //    Publisher: game.Publisher !== undefined ? game.Publisher : "",
-        //  });
         const appId = game.AppID; // Extract AppID from the game object
         console.log("Adding game with AppID:", appId); // Debugging log
         alert(`Game name ${game.Name} added successfully to your list!`);
@@ -272,7 +314,7 @@
           return;
         }
 
-        const url = `https://localhost:7147/api/Games/AddGameToList?userId=${userId}&gameId=${appId}`;
+        const url = `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Games/AddGameToList?userId=${userId}&gameId=${appId}`;
 
         ajaxCall("POST", url, null, addGameSuccessCB, addGameErrorCB);
       }
@@ -292,20 +334,34 @@
             "Network error occurred while adding the game."
         );
       }
-      //}
 
-      // Ajax function to handle the POST request
-      function ajaxCall(method, api, data, successCB, errorCB) {
-        $.ajax({
-          type: method,
-          url: api,
-          data: data,
-          cache: false,
-          contentType: "application/json", // Set content type to JSON
-          dataType: "json", // Expect a JSON response
-          success: successCB, // Callback on success
-          error: errorCB, // Callback on error
-        });
+      // Retrieve logged-in user's username and email from localStorage
+      const loggedInUserName = localStorage.getItem("loggedInUserName");
+      const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+
+      // Define the admin user credentials
+      const adminUserName = "admin";
+      const adminUserEmail = "admin@admin.com"; // Ensure no extra spaces here
+
+      // Check if the logged-in user is the admin based on both username and email
+      const isAdmin =
+        loggedInUserName === adminUserName &&
+        loggedInUserEmail === adminUserEmail;
+
+      const adminLinkContainer = document.getElementById("admin-link");
+
+      // If the user is an admin, show the admin button
+      if (isAdmin) {
+        const adminButton = document.createElement("button"); // Create a button element
+        adminButton.textContent = "Go to Admin Page"; // Button text
+        adminButton.classList.add("admin-button"); // Optional: Add a class for styling
+
+        // When the button is clicked, redirect to the admin page
+        adminButton.onclick = function () {
+          window.location.href = "adminPage.html"; // Redirect to the admin page
+        };
+
+        adminLinkContainer.appendChild(adminButton); // Append the button to the container
       }
     </script>
   </body>

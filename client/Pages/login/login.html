@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://proj.ruppin.ac.il/igroup8/test2/tar3/client/Pages/ajaxcalls.js?v=1.0"></script>
+
+    <title>User Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f9;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .register-btn {
+        background-color: #6c757d;
+        margin-top: 5px;
+      }
+      .register-btn:hover {
+        background-color: #5a6268;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <form id="loginForm">
+        <label for="loginEmail">Email:</label>
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Enter your email"
+          required
+        />
+        <label for="loginPassword">Password:</label>
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter your password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+      <button
+        type="button"
+        class="register-btn"
+        onclick="window.location.href='register.html'"
+      >
+        Go to Register
+      </button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Login Form Submission
+        $("#loginForm").submit(function (e) {
+          e.preventDefault(); // Prevent default form submission behavior
+
+          // Collect user input
+          const email = $("#loginEmail").val();
+          const password = $("#loginPassword").val();
+
+          const api = `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/PostLogin?Email=${email}&Password=${password}`;
+          // Make the AJAX call
+          ajaxCall("POST", api, null, PostLoginSCB, PostLoginECB);
+
+          // Success callback
+          function PostLoginSCB(obj) {
+            console.log(obj); // Log the response object for debugging
+            if (obj.id > 0 || obj.name === null) {
+              // Extract details from the response object
+              const userName = obj.name;
+              const Email = $("#loginEmail").val();
+              localStorage.setItem("loggedInUserName", userName);
+              localStorage.setItem("loggedInUserEmail", Email);
+              localStorage.setItem("loggedInUserId", obj.id);
+              localStorage.setItem("loggedInUserPassword", password);
+              console.log(localStorage.getItem("loggedInUserName"));
+
+              // Notify the user and redirect
+              alert("Login successful! Redirecting to the homepage...");
+              window.location.href = `index.html?username=${encodeURIComponent(
+                localStorage.getItem("loggedInUserName")
+              )}`;
+            } else {
+              alert(
+                "Login failed. There is probably a problem with your password or email"
+              );
+            }
+          }
+
+          // Error callback
+          function PostLoginECB(xhr, status, error) {
+            console.error(
+              "Error during login:",
+              xhr.responseText || status || error
+            );
+
+            // Parse the response text if it contains a JSON object
+            try {
+              const response = JSON.parse(xhr.responseText);
+
+              // Check if the message indicates the user is inactive
+              if (response.message === "false") {
+                alert(
+                  "Your account has been deactivated by the admin. Please contact support."
+                );
+                return;
+              }
+            } catch (e) {
+              console.error("Failed to parse response:", e);
+            }
+
+            // Default error message for other cases
+            alert(
+              "Login failed. Please check your credentials or try again later."
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

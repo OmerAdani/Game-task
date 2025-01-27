@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page</title>
+    <script src="https://proj.ruppin.ac.il/igroup8/test2/tar3/client/Pages/ajaxcalls.js?v=1.0"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .switcher {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .switcher button {
+        margin: 0 5px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .switcher button.active {
+        background-color: #0056b3;
+      }
+
+      footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      #backButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #backButton:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Gaming Users Data for Admin</h1>
+    </header>
+
+    <div class="container">
+      <div class="switcher">
+        <button id="usersButton" class="active">Users</button>
+        <button id="gamesButton">Games</button>
+      </div>
+
+      <div id="usersTableWrapper">
+        <table id="usersTable" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Games Purchased</th>
+              <th>Money Spent</th>
+              <th>Active Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div id="gamesTableWrapper" style="display: none">
+        <table id="gamesTable" class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Game ID</th>
+              <th>Title</th>
+              <th>Downloads</th>
+              <th>Total Revenue</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <!-- Back to Homepage Button -->
+      <div class="back-button-container">
+        <button id="backButton" class="btn btn-primary">
+          Back to Homepage
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Gaming Admin Dashboard</p>
+    </footer>
+
+    <script>
+      $(document).ready(function () {
+        $("#backButton").click(function () {
+          window.location.href = "index.html";
+        });
+        const usersApiUrl = `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/GetUserDetails`;
+        const gamesApiUrl = `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Games/GetGameDetails`;
+        const isActiveApiUrl = `https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/IsActive`;
+
+        // Initialize DataTables
+        const usersTable = $("#usersTable").DataTable();
+        const gamesTable = $("#gamesTable").DataTable();
+
+        // Load Users Data
+        ajaxCall("GET", usersApiUrl, "", loadUsersSCB, loadUsersECB);
+
+        // Success callback for loading users
+        function loadUsersSCB(data) {
+          console.log("Users Data:", data); // Debugging
+
+          // Populate the users table
+          usersTable
+            .clear()
+            .rows.add(
+              data.map((user) => [
+                user.id || "N/A",
+                user.name || "N/A",
+                user.numofgames || 0,
+                user.totalprice
+                  ? `$${parseFloat(user.totalprice).toFixed(2)}`
+                  : "$0.00",
+                `<input type="checkbox" class="toggle-active" data-user-id="${
+                  user.id
+                }" ${user.isActive ? "checked" : ""}>`,
+              ])
+            )
+            .draw();
+        }
+
+        // Error callback for users API
+        function loadUsersECB(err) {
+          console.error("Failed to load users data:", err);
+        }
+
+        // Load Games Data
+        ajaxCall("GET", gamesApiUrl, "", loadGamesSCB, loadGamesECB);
+
+        // Success callback for loading games
+        function loadGamesSCB(data) {
+          console.log("Games Data:", data); // Debugging
+
+          // Populate the games table
+          gamesTable
+            .clear()
+            .rows.add(
+              data.map((game) => [
+                game.appID || "N/A",
+                game.categories || "N/A",
+                game.numberOfPurchases || 0,
+                game.totalamount
+                  ? `$${parseFloat(game.totalamount).toFixed(2)}`
+                  : "$0.00",
+              ])
+            )
+            .draw();
+        }
+
+        // Error callback for games API
+        function loadGamesECB(err) {
+          console.error("Failed to load games data:", err);
+        }
+
+        // Switcher Button Logic
+        $("#usersButton").click(function () {
+          $(this).addClass("active");
+          $("#gamesButton").removeClass("active");
+          $("#usersTableWrapper").show();
+          $("#gamesTableWrapper").hide();
+        });
+
+        $("#gamesButton").click(function () {
+          $(this).addClass("active");
+          $("#usersButton").removeClass("active");
+          $("#gamesTableWrapper").show();
+          $("#usersTableWrapper").hide();
+        });
+
+        // Handle Active Status Change
+        $("#usersTable").on("change", ".toggle-active", function () {
+          const userId = $(this).data("user-id");
+          const isActive = $(this).is(":checked");
+
+          ajaxCall(
+            "PUT",
+            `${isActiveApiUrl}?userId=${userId}&isActive=${isActive}`,
+            "",
+            isActiveUserSCB,
+            isActiveUserECB
+          );
+
+          // Success callback for updating user active status
+          function isActiveUserSCB() {
+            Swal.fire(
+              "Success",
+              "User status updated successfully!",
+              "success"
+            );
+          }
+
+          // Error callback for updating user active status
+          function isActiveUserECB(err) {
+            console.error(err);
+            Swal.fire("Error", "Failed to update user status.", "error");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

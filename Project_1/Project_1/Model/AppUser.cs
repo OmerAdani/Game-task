@@ -16,16 +16,19 @@ namespace Project_1.Model
         public string Email { get; set; }
         [JsonPropertyName("Password")]
         public string Password { get; set; }
+        [JsonPropertyName("isActive")]
+        public bool isActive { get; set; }
 
 
 
         // Constructor
-        public AppUser(int id, string name, string email, string password)
+        public AppUser(int id, string name, string email, string password, bool isactive)
         {
             Id = id;
             Name = name;
             Email = email;
             Password = password;
+            isActive = isactive;
 
         }
 
@@ -33,7 +36,7 @@ namespace Project_1.Model
 
         public static List<AppUser> Read()
         {
-            //return UsersList;
+
             DBservices dbs = new DBservices();
             return dbs.Read();
         }
@@ -72,8 +75,8 @@ namespace Project_1.Model
             }
             return false;
         }
-      
-        public (int id, string name) GetUserIdByEmail(string Email)
+
+        public (int id, string name, bool isActive) GetUserIdByEmail(string Email)
         {
 
             DBservices dbs = new DBservices();
@@ -87,7 +90,7 @@ namespace Project_1.Model
             DBservices dbs = new DBservices();
             foreach (AppUser tempuser in dbs.Read())
             {
-                if(tempuser.Id==user.Id && tempuser.Email==user.Email&&tempuser.Password==user.Password)
+                if (tempuser.Id == user.Id && tempuser.Email == user.Email && tempuser.Password == user.Password)
                 {
                     return null;///משתמש לא נמצא או שיש כבר משתמש כזה
                 }
@@ -96,16 +99,27 @@ namespace Project_1.Model
             return dbs.UpdateUser(user);
         }
 
+        public int IsActive(int userid, bool isActive)
+        {
+
+            DBservices dbs = new DBservices();
+            return dbs.changeIsActive(userid, isActive);
+        }
+
+        public List<Object> GetUserDetails()
+        {
+
+            DBservices dbs = new DBservices();
+            return dbs.GetUserDetails();
+        }
 
 
 
 
-        //public int Update()
-        //{
-        //    DBservices dbs = new DBservices();
-        //    return dbs.Update(this);
 
-        //}
+
+
+
 
     }
 }

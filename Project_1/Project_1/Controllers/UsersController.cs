@@ -19,7 +19,7 @@ namespace Steam.Controllers
         }
 
         // PUT api/<UsersController>/5
-        
+
         [HttpPut("update/{id}")]
         public IActionResult Put(int id, [FromBody] AppUser user)
         {
@@ -61,7 +61,20 @@ namespace Steam.Controllers
 
                 if (result == 1)
                 {
-                    return Ok(new { message = "User registered successfully." });
+                    var (id, name, isActive) = user.GetUserIdByEmail(user.Email);
+
+                    if (id > 0)
+                    {
+                        return Ok(new
+                        {
+                            id = id,
+                            message = "User registered successfully."
+
+                        });
+                    }
+                    return Ok(new { message = "User registered successfully."});
+
+
                 }
                 else if (result == 0)
                 {
@@ -78,17 +91,25 @@ namespace Steam.Controllers
             }
         }
 
-        // Login method
         [HttpPost("PostLogin")]
         public IActionResult Login(string Email, string Password)
         {
             AppUser user = new AppUser();
+
+            // Attempt login with provided credentials
             bool isLogin = user.Login(Email, Password);
 
             if (isLogin)
             {
-                var (id, name) = user.GetUserIdByEmail(Email);
-                
+                // Get user details by email
+                var (id, name, isActive) = user.GetUserIdByEmail(Email);
+
+                // Check if user is active
+                if (!isActive)
+                {
+                    return NotFound(new { message = "false" });
+                }
+
                 if (id > 0)
                 {
                     return Ok(new
@@ -103,5 +124,60 @@ namespace Steam.Controllers
 
             return Unauthorized(new { message = "Invalid email or password" });
         }
+
+
+
+
+        [HttpPut]
+        [Route("IsActive")]
+        public IActionResult IsActive(int userId, bool isActive)
+        {
+            // Create an instance of AppUser
+            AppUser user = new AppUser();
+
+            // Validate input to prevent any implicit type conversion errors
+            if (userId <= 0)
+            {
+                return BadRequest("Invalid userId provided");
+            }
+
+            // Call the IsActive method to update the user's active status
+            int result = user.IsActive(userId, isActive);
+
+            if (result >= 0)
+            {
+                return Ok(new
+                {
+                    success = true,
+                    message = isActive ? "User has been successfully activated." : "User has been successfully deactivated."
+                });
+            }
+            else
+            {
+                return BadRequest("Failed to update user status.");
+            }
+        }
+
+        [HttpGet("GetUserDetails")]
+        public List<Object> GetUserDetails()
+
+        {
+            AppUser user = new AppUser();
+            return user.GetUserDetails();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

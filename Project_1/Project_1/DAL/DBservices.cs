@@ -161,7 +161,7 @@ namespace Project_1.DAL
 
         }
 
-        public (int id,string name) GetUserIdByEmail(string email)
+        public (int id, string name, bool isActive) GetUserIdByEmail(string email)
         {
             SqlConnection con;
             SqlCommand cmd;
@@ -186,13 +186,15 @@ namespace Project_1.DAL
 
                 if (dataReader.Read())
                 {
-                   int id= Convert.ToInt32(dataReader["id"]);
+                    int id = Convert.ToInt32(dataReader["id"]);
                     string name = dataReader["UserName"].ToString();
+                    bool isActive = Convert.ToBoolean(dataReader["isActive"]);
 
-                    return (id, name); // החזר Tuple עם UserId ו-Name
+
+                    return (id, name, isActive); // החזר Tuple עם UserId ו-Name
                 }
 
-                return (-1,null); // מזהה לא נמצא
+                return (-1, null, false); // מזהה לא נמצא
             }
             catch (Exception ex)
             {
@@ -512,7 +514,7 @@ namespace Project_1.DAL
 
         }
 
-        public bool DeleteGameFromList(int userid,int gameid)
+        public bool DeleteGameFromList(int userid, int gameid)
         {
 
             SqlConnection con;
@@ -610,76 +612,147 @@ namespace Project_1.DAL
             }
         }
 
-        //public int Update(AppUser user)
-        //{
+        public int changeIsActive(int UserId, bool isActive)
+        {
+            SqlConnection con;
+            SqlCommand cmd;
 
-        //    SqlConnection con;
-        //    SqlCommand cmd;
+            try
+            {
+                // יצירת חיבור למסד הנתונים
+                con = connect("igroup8_test2");
+            }
+            catch (Exception ex)
+            {
+                throw (ex); // כתיבת שגיאה ללוג
+            }
 
-        //    try
-        //    {
-        //        con = connect("igroup8_test2"); // create the connection
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // write to log
-        //        throw (ex);
-        //    }
-
-        //    cmd = CreateCommandWithStoredProcedure("UpdateUser", con, user);             // create the command
-
-        //    try
-        //    {
-        //        int numEffected = cmd.ExecuteNonQuery(); // execute the command
-        //        return numEffected;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // write to log
-        //        throw (ex);
-        //    }
-
-        //    finally
-        //    {
-        //        if (con != null)
-        //        {
-        //            // close the db connection
-        //            con.Close();
-        //        }
-        //    }
-
-        //}
+            Dictionary<string, object> paramDic = new Dictionary<string, object>();
+            paramDic.Add("@UserId", UserId); // שם הפרמטר לפי הפורמט שלך
+            paramDic.Add("@isActive", isActive);
 
 
+            cmd = CreateCommandWithStoredProcedureGeneral("changeIsActive", con, paramDic);
 
-        ////---------------------------------------------------------------------------------
-        //// Create the SqlCommand using a stored procedure
-        ////---------------------------------------------------------------------------------
-        //private SqlCommand CreateCommandWithStoredProcedure(String spName, SqlConnection con, AppUser user)
-        //{
-
-        //    SqlCommand cmd = new SqlCommand(); // create the command object
-
-        //    cmd.Connection = con;              // assign the connection to the command object
-
-        //    cmd.CommandText = spName;      // can be Select, Insert, Update, Delete 
-
-        //    cmd.CommandTimeout = 10;           // Time to wait for the execution' The default is 30 seconds
-
-        //    cmd.CommandType = System.Data.CommandType.StoredProcedure; // the type of the command, can also be text
-
-        //    cmd.Parameters.AddWithValue("@UserID", user.Id);
-
-        //    cmd.Parameters.AddWithValue("@UserName", user.Name);
-
-        //    cmd.Parameters.AddWithValue("@Email", user.Email);
-
-        //    cmd.Parameters.AddWithValue("@Password", user.Password);
+            try
+            {
+                SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                if (dataReader.Read())
+                {
+                    // מילוי אובייקט המשתמש עם הנתונים המעודכנים
+                    UserId = Convert.ToInt32(dataReader["ID"]);
+                    isActive = Convert.ToBoolean(dataReader["isActive"]);
 
 
-        //    return cmd;
-        //}
+                    return 1;
+                }
+                else
+                {
+                    return 0; // אם לא נמצאו תוצאות
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex); // כתיבת שגיאה ללוג
+            }
+            finally
+            {
+                if (con != null)
+                {
+                    con.Close(); // סגירת החיבור למסד הנתונים
+                }
+            }
+        }
+
+        public List<Object> GetUserDetails()
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("igroup8_test2"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            Dictionary<string, object> paramDic = new Dictionary<string, object>();
+            cmd = CreateCommandWithStoredProcedureGeneral("getUserPayAmountTable", con, paramDic);
+            SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Object> users = new List<Object>();
+
+            while (dataReader.Read())
+            {
+                users.Add(new
+                {
+                    Id = Convert.ToInt32(dataReader["UserID"]),
+                    Name = dataReader["UserName"].ToString(),
+                    Numofgames = Convert.ToInt32(dataReader["Numofgames"]),
+                    isActive = Convert.ToBoolean(dataReader["isActive"]),
+                    Totalprice = Convert.ToInt32(dataReader["Totalprice"])
+
+
+
+
+
+                });
+
+
+            }
+            return users;
+
+        }
+
+        public List<Object> GetGameDetails()
+        {
+            SqlConnection con;
+            SqlCommand cmd;
+
+            try
+            {
+                con = connect("igroup8_test2"); // create the connection
+            }
+            catch (Exception ex)
+            {
+                // write to log
+                throw (ex);
+            }
+
+            Dictionary<string, object> paramDic = new Dictionary<string, object>();
+            cmd = CreateCommandWithStoredProcedureGeneral("getGamesDownloadsAmount", con, paramDic);
+            SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            List<Object> games = new List<Object>();
+
+            while (dataReader.Read())
+            {
+                games.Add(new
+                {
+                    AppID = Convert.ToInt32(dataReader["AppID"]),
+                    Categories = dataReader["Categories"].ToString(),
+                    numberOfPurchases = Convert.ToInt32(dataReader["numberOfPurchases"]),
+                    totalamount = Convert.ToInt32(dataReader["totalamount"]),
+                    
+
+
+
+
+
+                });
+
+
+            }
+            return games;
+
+        }
+
+
 
     }
+
 }
 

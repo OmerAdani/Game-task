@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="../js/ajaxcalls.js"></script>
-    <title>User Login and Registration</title>
+    <script src="https://proj.ruppin.ac.il/igroup8/test2/tar3/client/Pages/ajaxcalls.js?v=1.0"></script>
+    <title>User Registration</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -50,29 +50,18 @@
       button:hover {
         background-color: #0056b3;
       }
+
+      .login-btn {
+        background-color: #6c757d;
+        margin-top: 5px;
+      }
+      .login-btn:hover {
+        background-color: #5a6268;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>Login</h1>
-      <form id="loginForm">
-        <label for="loginEmail">Email:</label>
-        <input
-          type="email"
-          id="loginEmail"
-          placeholder="Enter your email"
-          required
-        />
-        <label for="loginPassword">Password:</label>
-        <input
-          type="password"
-          id="loginPassword"
-          placeholder="Enter your password"
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-
       <h1>Register</h1>
       <form id="registerForm">
         <label for="registerName">Name:</label>
@@ -99,26 +88,17 @@
         <span class="error" id="passwordError"></span>
         <button id="registerbtn" type="submit">Register</button>
       </form>
+      <button
+        type="button"
+        class="login-btn"
+        onclick="window.location.href='login.html'"
+      >
+        Go to Login
+      </button>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
-      // Define the ajaxCall function
-
-      function ajaxCall(method, api, data, successCB, errorCB) {
-        $.ajax({
-          type: method,
-          url: api,
-          data: data,
-          cache: false,
-          contentType: "application/json",
-          dataType: "json",
-          success: successCB,
-          error: errorCB,
-        });
-      }
-
       $(document).ready(function () {
         // Register Form Submission
         $("#registerForm").submit(function (e) {
@@ -150,64 +130,29 @@
           // Send AJAX POST request to the Register API
           ajaxCall(
             "POST",
-            "https://localhost:7147/api/Users/PostRegister",
+            "https://proj.ruppin.ac.il/igroup8/test2/tar1/api/Users/PostRegister",
             JSON.stringify(userData),
             (data) => {
-              alert("Registration successful! please login");
+              console.log(data);
+              const userName = $("#registerName").val();
+              const Email = $("#registerEmail").val();
+              const password = $("#registerPassword").val();
+              localStorage.setItem("loggedInUserName", userName);
+              localStorage.setItem("loggedInUserEmail", Email);
+              localStorage.setItem("loggedInUserId", data.id);
+              localStorage.setItem("loggedInUserPassword", password);
+              //console.log(localStorage.getItem("loggedInUserName"));//
+              // console.log(localStorage.getItem("loggedInUserId"));//
+              alert("Registration successful!");
+              window.location.href = "index.html";
             },
             (error) => {
               alert(`Error: ${error.message}`);
-
               console.error("Registration error:", error);
             }
           );
         });
       });
-
-      $(document).ready(function () {
-        // Login Form Submission
-        $("#loginForm").submit(function (e) {
-          e.preventDefault(); // Prevent default form submission behavior
-
-          // Collect user input
-          const email = $("#loginEmail").val();
-          const password = $("#loginPassword").val();
-
-          const api = `https://localhost:7147/api/Users/PostLogin?Email=${email}&Password=${password}`;
-          // Make the AJAX call
-          ajaxCall("POST", api, null, PostLoginSCB, PostLoginECB);
-
-          // Success callback
-          function PostLoginSCB(obj) {
-            console.log(obj); // Log the response object for debugging
-            if (obj.id > 0 || obj.name === null) {
-              // Extract details from the response object
-              const userName = obj.name;
-              const Email = $("#loginEmail").val();
-              localStorage.setItem("loggedInUserName", userName);
-              localStorage.setItem("loggedInUserEmail", Email);
-              localStorage.setItem("loggedInUserId", obj.id);
-              console.log(localStorage.getItem("loggedInUserName"));
-
-              // Notify the user and redirect
-              alert("Login successful! Redirecting to the homepage...");
-              window.location.href = `index.html?username=${encodeURIComponent(
-                userName
-              )}`;
-            } else {
-              alert(
-                "Login failed. There is probably a problem with your password or email"
-              );
-            }
-          }
-
-          // Error callback
-          function PostLoginECB(obj) {
-            console.log(obj); // Corrected to console.log
-            alert("Login failed");
-          }
-        }); // Closing the $("#loginForm").submit function
-      }); // Closing the $(document).ready function
     </script>
   </body>
 </html>

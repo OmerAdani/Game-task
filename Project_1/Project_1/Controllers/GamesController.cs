@@ -147,6 +147,13 @@ namespace Steam.Controllers
             return Conflict(errorResponse);
         }
 
+        [HttpGet("GetGameDetails")]
+        public List<Object> GetGameDetails()
+
+        {
+            Game g = new Game();
+            return g.GetGameDetails();
+        }
 
 
 
